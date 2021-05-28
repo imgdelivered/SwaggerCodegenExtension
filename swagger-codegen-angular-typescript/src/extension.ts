@@ -8,6 +8,7 @@ import * as fs from 'fs';
 import * as os from 'os';
 import * as Path from 'path';
 
+
 let workspace: string;
 let fileSystemPath: string;
 let myuuid :string;
@@ -129,7 +130,36 @@ export function deactivate() {}
 
 
 function processFile(fileName: string, path: string) {
-console.log('processing file ' + fileName + ' to path ' + path);
+	console.log('processing file ' + fileName + ' to path ' + path);
+	var swagger = require("./swagger/index.js");
+	swagger.generateApi({
+		name: path + '/api.ts',
+		url: fileName,
+		generateRouteTypes: false,
+		generateClient: true,
+		httpClientType: "axios",
+		defaultResponseAsSuccess: false,
+		defaultResponseType: "void",
+		generateUnionEnums: false,
+		generateResponses: false,
+		extractRequestParams: false,
+		extractRequestBody: false,
+		input: fileName,
+		output: path,
+		templates: "",
+		modular: false,
+		toJS: false,
+		enumNamesAsValues: false,
+		moduleNameIndex: 0,
+		moduleNameFirstTag: false,
+		disableStrictSSL: false,
+		disableProxy: false,
+		singleHttpClient: false,
+		cleanOutput: false,
+		silent: true,
+		typePrefix:"",
+		typeSuffix:"",
+	  });
 } 
 
 function uuidv4() {
