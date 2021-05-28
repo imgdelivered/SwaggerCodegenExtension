@@ -1,0 +1,13 @@
+{
+    "apispec":
+    [
+        {
+             "uri": "http://example.com/swagger/swagger.json",
+             "path": "ClientApp/Apis/example"
+        },
+        {
+             "uri": "http://acme.com/swagger/swagger.json",
+             "path": "ClientApp/Apis/acme"
+        }
+    ]
+}
